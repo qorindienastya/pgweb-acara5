@@ -75,14 +75,7 @@
                 });
             },
         });
-
-        //function dari jquery untuk memanggil sebuah data JSON (termasuk geojson bedanya dengan tambahan koordinat)
-        $.getJSON("geojson/toponimi.geojson", function (data) {
-            toponimi.addData(data); // Menambahkan data ke dalam GeoJSON Point Toponimi
-            map.addLayer(toponimi); // Menambahkan GeoJSON Point Topinimi ke dalam peta
-        }); // menampilkan atau convert data spasial secara langsung dari file geojson tanpa emmbuat marker satu persatu
-        // defaultnya berupa blue marker
-
+        
         // GeoJSON Polyline Jalan
         var jalan = L.geoJSON(null, {
             // Style
@@ -111,11 +104,6 @@
                     },
                 });
             },
-        });
-
-        $.getJSON("geojson/jalan.geojson", function (data) {
-            jalan.addData(data); // Menambahkan data ke dalam GeoJSON Polyline Jalan
-            map.addLayer(jalan); // Menambahkan GeoJSON Polyline Jalan ke dalam peta
         });
 
         // GeoJSON Polygon Jumlah Penduduk
@@ -175,6 +163,19 @@
             map.addLayer(jumlah_penduduk); // Menambahkan GeoJSON Polygon Jumlah Penduduk ke dalam peta
         });
 
+        //function dari jquery untuk memanggil sebuah data JSON (termasuk geojson bedanya dengan tambahan koordinat)
+        $.getJSON("geojson/toponimi.geojson", function (data) {
+            toponimi.addData(data); // Menambahkan data ke dalam GeoJSON Point Toponimi
+            map.addLayer(toponimi); // Menambahkan GeoJSON Point Topinimi ke dalam peta
+        }); // menampilkan atau convert data spasial secara langsung dari file geojson tanpa emmbuat marker satu persatu
+        // defaultnya berupa blue marker
+
+        
+        $.getJSON("geojson/jalan.geojson", function (data) {
+            jalan.addData(data); // Menambahkan data ke dalam GeoJSON Polyline Jalan
+            map.addLayer(jalan); // Menambahkan GeoJSON Polyline Jalan ke dalam peta
+        });
+        
         // Control Layer
         var baseMaps = {
             "OpenStreetMap": basemap,
